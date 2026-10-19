@@ -12,36 +12,53 @@ const addButton = document.getElementsByTagName('button')[0];
 const todoList = document.getElementById('incompleteTasks');
 const completedList = document.getElementById('completed-tasks');
 
-const createTask = function (taskText) {
-  const taskItem = document.createElement('li');
-
+const createCheckbox = function () {
   const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  return checkbox;
+};
+
+const createTaskLabel = function (taskText) {
   const taskLabel = document.createElement('label');
-  const editInput = document.createElement('input');
-  const editButton = document.createElement('button');
-
-  const deleteButton = document.createElement('button');
-  const deleteIcon = document.createElement('img');
-
   taskLabel.innerText = taskText;
   taskLabel.className = 'task';
+  return taskLabel;
+};
 
-  checkbox.type = 'checkbox';
+const createEditInput = function () {
+  const editInput = document.createElement('input');
   editInput.type = 'text';
   editInput.className = 'task';
+  return editInput;
+};
 
+const createEditButton = function () {
+  const editButton = document.createElement('button');
   editButton.innerText = 'Edit'; //innerText encodes special characters, HTML does not.
   editButton.className = 'edit';
+  return editButton;
+};
 
+const createDeleteButton = function () {
+  const deleteButton = document.createElement('button');
+  const deleteIcon = document.createElement('img');
   deleteButton.className = 'delete';
   deleteIcon.src = './remove.svg';
   deleteButton.appendChild(deleteIcon);
+  return deleteButton;
+};
 
-  taskItem.appendChild(checkbox);
-  taskItem.appendChild(taskLabel);
-  taskItem.appendChild(editInput);
-  taskItem.appendChild(editButton);
-  taskItem.appendChild(deleteButton);
+const createTask = function (taskText) {
+  const taskItem = document.createElement('li');
+
+  taskItem.append(
+    createCheckbox(),
+    createTaskLabel(taskText),
+    createEditInput(),
+    createEditButton(),
+    createDeleteButton(),
+  );
+
   return taskItem;
 };
 
