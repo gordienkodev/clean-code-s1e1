@@ -43,7 +43,9 @@ const createDeleteButton = function () {
   const deleteButton = document.createElement('button');
   const deleteIcon = document.createElement('img');
   deleteButton.className = 'delete';
+  deleteButton.setAttribute('aria-label', 'Delete task');
   deleteIcon.src = './remove.svg';
+  deleteIcon.alt = '';
   deleteButton.appendChild(deleteIcon);
   return deleteButton;
 };
