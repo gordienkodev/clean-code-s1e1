@@ -63,8 +63,9 @@ const createTask = function (taskText) {
 };
 
 const addTask = function () {
-  if (!taskInput.value) return;
-  const taskItem = createTask(taskInput.value);
+  const taskText = taskInput.value.trim();
+  if (!taskText) return;
+  const taskItem = createTask(taskText);
 
   todoList.appendChild(taskItem);
   bindTaskEvents(taskItem);
